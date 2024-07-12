@@ -1,3 +1,12 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
-SRC_URI += "file://0001-sensors.conf.default-add-tmp451.patch"
+SRC_URI:append = " \
+    file://0001-sensors.conf.default-add-tmp451.patch \
+    "
+
+SRC_URI:append:hifive-premier-p550 = " \
+    file://0001-hifive-premier-fancontrol-Changed-max-pwm-level-to-9.patch \
+    file://0001-Changed-hwmon-device-number-for-DVB.patch \
+    "
+
+SYSTEMD_AUTO_ENABLE:hifive-premier-p550 = "enable"
