@@ -11,5 +11,5 @@ SRC_URI += "file://sshd_config"
 
 do_install:append () {
     install -d {D}/etc/ssh
-    cp -r ${WORKDIR}/sshd_config ${D}/etc/ssh/sshd_config
+    cp -r ${UNPACKDIR}/sshd_config ${D}/etc/ssh/sshd_config
 }
