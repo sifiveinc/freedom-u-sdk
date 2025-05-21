@@ -3,6 +3,8 @@ From: Pritesh Patel <pritesh.patel@einfochips.com>
 Date: Thu, 25 Jul 2024 12:46:47 +0000
 Subject: [PATCH] fix errors
 
+Upstream-Status: Inappropriate [oe specific]
+
 Signed-off-by: Pritesh Patel <pritesh.patel@einfochips.com>
 ---
  lib/graphics_engine/include/vk_mem_alloc.h               | 2 +-
