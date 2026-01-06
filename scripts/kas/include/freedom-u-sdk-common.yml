@@ -7,7 +7,7 @@ repos:
 
   bitbake:
     url: https://git.openembedded.org/bitbake
-    commit: aab6b5ab43d6589f0a8ccacd0832a45eb0aa0fd0
+    commit: 720df1a53452983c1c832f624490e255cf389204
     layers:
       .: excluded
 
@@ -15,15 +15,15 @@ repos:
 
   openembedded-core:
     url: https://git.openembedded.org/openembedded-core
-    commit: 575a4316f661392eb73d1d97300511e2bca24ada
+    commit: 8519978592483bb096ed5192fff7af6c887b799e
     layers:
       meta:
 
-  meta-clang:
-    url: https://github.com/kraj/meta-clang.git
-    commit: 003cba92e982bdd565a6889f28799f8bba14957e
-    layers:
-      .:
+        #  meta-clang:
+        #    url: https://github.com/kraj/meta-clang.git
+        #    commit: 003cba92e982bdd565a6889f28799f8bba14957e
+        #    layers:
+        #      .:
 
   meta-sifive:
     url: https://github.com/sifive/meta-sifive.git
@@ -33,7 +33,7 @@ repos:
 
   meta-openembedded:
     url: https://git.openembedded.org/meta-openembedded
-    commit: 80ab58cc404959ae2f0e8b2e68935b3bfd8e8cfe
+    commit: a4e768dcfae181dd99e39c4286fa0729ca7f4e47
     layers:
       meta-filesystems:
       meta-gnome:
@@ -49,7 +49,7 @@ repos:
 
   meta-virtualization:
     url: https://git.yoctoproject.org/meta-virtualization
-    commit: 898239e810acbb7db93299f20deec8afe434f11b
+    commit: b9a29d2423407c1e50f19dc3f3e154d164c5f0ec
     layers:
       .:
 
