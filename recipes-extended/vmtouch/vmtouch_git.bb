@@ -12,8 +12,6 @@ SRCREV = "8f6898e3c027f445962e223ca7a7b33d40395fc6"
 BRANCH = "master"
 PV = "v1.3.1+git${SRCPV}"
 
-S = "${WORKDIR}/git"
-
 SRC_URI = "git://github.com/hoytech/vmtouch;protocol=https;branch=${BRANCH}"
 
 do_install() {

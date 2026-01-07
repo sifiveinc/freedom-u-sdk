@@ -17,8 +17,6 @@ SRCREV = "d26d6fdcefa1f9107ddde70024b73325bfe50ed2"
 
 PV = "1.0.1+git${SRCREV}"
 
-S = "${WORKDIR}/git"
-
 do_compile() {
     oe_runmake XCFLAGS="-DPERFORMANCE_RUN=1 -DITERATIONS=5000 -DMTIME_RATE_HZ_DEF=32768" OUTNAME=coremark link
 
