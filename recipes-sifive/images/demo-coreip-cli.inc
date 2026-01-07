@@ -106,9 +106,9 @@ IMAGE_INSTALL += "\
     udev-extraconf \
     clang \
     clang-dev \
-    clang-libllvm \
     clang-staticdev \
     compiler-rt \
+    llvm-dev \
     ldd \
     libcxx \
     openmp \
