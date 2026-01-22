@@ -45,7 +45,7 @@ repos:
 
   meta-tensorflow-lite:
     url: https://github.com/NobuoTsukamoto/meta-tensorflow-lite.git
-    commit: 887c8d573aed0604627807bb117f330c109ab7c5
+    commit: e4c39282f933c0a85467c6d0830cdc15bc1bec7e
 
   meta-virtualization:
     url: https://git.yoctoproject.org/meta-virtualization
