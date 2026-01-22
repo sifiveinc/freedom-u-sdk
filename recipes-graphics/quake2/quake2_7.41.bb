@@ -22,7 +22,6 @@ SRC_URI = "git://github.com/yquake2/yquake2.git;protocol=https;branch=master \
 
 # Tag: QUAKE2_7_43
 SRCREV = "d08cf04d2d5d3ffa0b10eee2e300094571423031"
-S = "${WORKDIR}/git"
 
 FILES:${PN} += "${libdir}/games/${PN}/* ${datadir}/icons/hicolor/512x512/apps/${PN}.png"
 CONFFILES:${PN} += "${libdir}/games/${PN}/baseq2/yq2.cfg"
