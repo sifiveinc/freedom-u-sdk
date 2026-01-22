@@ -4,5 +4,5 @@ header:
 local_conf_header:
 
   clang: |
-    TOOLCHAIN = "clang"
-    TOOLCHAIN:pn-opensbi-sifive = "gcc"
+    PREFERRED_TOOLCHAIN_TARGET = "clang"
+    TOOLCHAIN:pn-webkitgtk = "gcc"
