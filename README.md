@@ -3,7 +3,7 @@ SiFive Freedom Unleashed SDK layer for OpenEmbedded/Yocto
 
 ## Description
 
-The experimental Freedom Unleashed (FU) SDK is based on OpenEmbedded/Yocto framework, allowing to build custom Linux distributions:
+The experimental Freedom Unleashed (FU) SDK is based on OpenEmbedded/Yocto framework, allowing you to build custom Linux distributions:
 - build predefined disk images for QEMU, [SiFive HiFive Unleashed](https://www.sifive.com/boards/hifive-unleashed) development board and [SiFive HiFive Unmatched](https://www.sifive.com/boards/hifive-unmatched)
 - build custom disk images with additional software packages from various third-party OE layers;
 - quickly launch QEMU VM instance with your built disk image;
@@ -24,7 +24,6 @@ This layer depends on:
 * https://git.openembedded.org/meta-openembedded
 * https://git.yoctoproject.org/meta-virtualization
 * https://github.com/sifive/meta-sifive.git
-* https://github.com/kraj/meta-clang.git
 * https://github.com/NobuoTsukamoto/meta-tensorflow-lite.git
 
 ## Prerequisites for the build host
@@ -42,14 +41,14 @@ git clone https://github.com/sifive/freedom-u-sdk
 ## Available machines
 
 This layer doesn't define new machines.
-It uses machine provides by the `meta-sifive` layer, as well as the Qemu RISC-V
+It uses machines provided by the `meta-sifive` layer, as well as the Qemu RISC-V
 provided by the oe-core layer.
 
 ## Available distribution
 
 This layer provides a distribution, named `freedom-u-sdk` for the following machines:
 * `freedom-u540`: The SiFive HiFive Unleashed board,
-* `unmatched`: The Sifive Unmatched board,
+* `unmatched`: The SiFive Unmatched board,
 * `qemuriscv64`: The Qemu RISC-V 64bits.
 
 It also provides two disk images:
@@ -95,7 +94,7 @@ kas shell ./freedom-u-sdk/scripts/kas/qemuriscv64.yml -c "runqemu snapshot slirp
 
 ## Execute runtime tests
 
-The OpenEmbedded/Yocto framework provides also provides tools to implement and to run tests.
+The OpenEmbedded/Yocto framework also provides tools to implement and to run tests.
 
 These tests can be executed on all supported targets, using the following commands:
 
@@ -247,7 +246,7 @@ sync
 
 ### NBD (Network Block Device) rootfs
 
-This is an experimantal feature currently only available on SiFive HiFive
+This is an experimental feature currently only available on SiFive HiFive
 Unmatched board. This allow sharing a block device over the network. This is
 not an extensive guide into NBD, but a quick start.
 
@@ -264,7 +263,7 @@ If you are booting directly from U-Boot prompt, you would need to set
 Note that `<export_name>` value might be ignored by the NBD server (depends on
 the implementation and configuration).
 
-`nbdkit` is a recommended NBD server for it's flexibility.
+`nbdkit` is a recommended NBD server for its flexibility.
 
 Here is an example command for `nbdkit`:
 ```
@@ -299,7 +298,7 @@ disk images over the network.
 
 ```
 cd /usr/share/tensorflow/lite/examples/python/
-python3 python3 mnist.py
+python3 mnist.py
 ```
 
 ## Contributions & Feedback
