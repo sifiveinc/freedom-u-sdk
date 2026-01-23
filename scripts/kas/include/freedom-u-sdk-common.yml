@@ -19,12 +19,6 @@ repos:
     layers:
       meta:
 
-  meta-clang:
-    url: https://github.com/kraj/meta-clang.git
-    commit: cf20f8bd1366d41094c945597b95dd746e87b871
-    layers:
-      .:
-
   meta-sifive:
     url: https://github.com/sifive/meta-sifive.git
     commit: 79b788d356ab6b3f1c7084e64b052534486f3520
