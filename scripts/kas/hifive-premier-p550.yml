@@ -1,0 +1,20 @@
+header:
+  version: 14
+  includes:
+    - scripts/kas/include/freedom-u-sdk-common.yml
+
+repos:
+  meta-sifive:
+    url: https://github.com/sifive/meta-sifive.git
+    commit: 0ab2764f74142006b77a6e25eba34faed1e10ed6
+    layers:
+      .:
+
+target:
+ - demo-coreip-xfce4
+
+machine: hifive-premier-p550
+
+local_conf_header:
+  kmod-native: |
+    PACKAGECONFIG:append:pn-kmod-native = " zstd"
