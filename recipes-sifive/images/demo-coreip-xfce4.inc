@@ -47,6 +47,10 @@ IMAGE_INSTALL += "\
     glmark2 \
     "
 
+IMAGE_INSTALL:append:hifive-premier-p550 = " \
+    supertuxkart \
+    "
+
 inherit features_check
 
 REQUIRED_DISTRO_FEATURES = "x11 systemd"
