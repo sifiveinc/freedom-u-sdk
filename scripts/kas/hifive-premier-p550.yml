@@ -1,0 +1,15 @@
+header:
+  version: 14
+  includes:
+    - scripts/kas/include/freedom-u-sdk-common.yml
+
+target: demo-coreip-xfce4
+
+machine: hifive-premier-p550
+
+local_conf_header:
+  kmod-native: |
+    PACKAGECONFIG:append:pn-kmod-native = " zstd"
+
+  rootfs-alignment: |
+    IMAGE_ROOTFS_ALIGNMENT = "4096"
