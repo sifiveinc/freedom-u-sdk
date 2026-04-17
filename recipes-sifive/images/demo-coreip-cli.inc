@@ -194,6 +194,10 @@ IMAGE_INSTALL:remove:hifive-premier-p550 = " \
     wireless-regdb \
     "
 
+IMAGE_FEATURES:append:hifive-premier-p550 = " \
+    allow-root-login \
+    "
+
 IMAGE_INSTALL:append:hifive-premier-p550 = " \
     alsa-lib \
     alsa-utils \
