@@ -15,7 +15,7 @@ repos:
 
   openembedded-core:
     url: https://git.openembedded.org/openembedded-core
-    commit: 8519978592483bb096ed5192fff7af6c887b799e
+    commit: ab57471acad7ce2a037480dc7b301104620f1ebf
     layers:
       meta:
 
