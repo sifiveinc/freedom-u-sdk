@@ -107,7 +107,7 @@ IMAGE_INSTALL += "\
     clang \
     clang-dev \
     clang-staticdev \
-    compiler-rt \
+    compiler-rt-dev \
     llvm-dev \
     ldd \
     libcxx \

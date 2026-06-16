@@ -35,7 +35,6 @@ IMAGE_INSTALL += "\
     xdg-utils \
     libvdpau \
     gstreamer1.0 \
-    mesa-vdpau-drivers \
     vdpauinfo \
     libinput-bin \
     xeyes \
