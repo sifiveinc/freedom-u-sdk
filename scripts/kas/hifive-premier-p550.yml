@@ -12,8 +12,7 @@ repos:
 
 distro: freedom-u-sdk-hf-premier-p550
 
-target:
- - demo-coreip-xfce4
+target: demo-coreip-xfce4
 
 machine: hifive-premier-p550
 
