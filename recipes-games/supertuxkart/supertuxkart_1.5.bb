@@ -25,13 +25,12 @@ inherit cmake pkgconfig gtk-icon-cache features_check
 REQUIRED_DISTRO_FEATURES = "x11"
 
 SRC_URI = " \
-    https://github.com/supertuxkart/stk-code/releases/download/${PV}/SuperTuxKart-${PV}-src.tar.xz \
-    file://0001-fix-errors.patch \
+    https://github.com/supertuxkart/stk-code/releases/download/${PV}/SuperTuxKart-${PV}-src.tar.gz \
 "
 
-SRC_URI[sha256sum] = "9890392419baf4715313f14d5ad60746f276eed36eb580636caf44e2532c0f03"
+SRC_URI[sha256sum] = "33cf8841e4ff4082d80b9248014295bbbea61d14683e86dff100e3ab8f7b27cb"
 
-S = "${WORKDIR}/SuperTuxKart-${PV}-src"
+S = "${UNPACKDIR}/SuperTuxKart-${PV}-src"
 
 # Give BSP the chance to override GL
 SELECTGL ??= "-DUSE_GLES2=ON"
@@ -39,6 +38,7 @@ SELECTGL ??= "-DUSE_GLES2=ON"
 EXTRA_OECMAKE = " \
     ${SELECTGL} \
     -DBUILD_RECORDER=0 \
+    -DNO_SHADERC=ON \
 "
 PACKAGECONFIG ??= " \
     ${@bb.utils.filter('DISTRO_FEATURES', 'wayland', d)} \
