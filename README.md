@@ -1,10 +1,10 @@
 # freedom-u-sdk
-SiFive Freedom Unleashed SDK layer for OpenEmbedded/Yocto
+SiFive Freedom Unleashed SDK (FUSDK) layer for OpenEmbedded/Yocto
 
 ## Description
 
-The experimental Freedom Unleashed (FU) SDK is based on OpenEmbedded/Yocto framework, allowing you to build custom Linux distributions:
-- build predefined disk images for QEMU, [SiFive HiFive Unleashed](https://www.sifive.com/boards/hifive-unleashed) development board and [SiFive HiFive Unmatched](https://www.sifive.com/boards/hifive-unmatched)
+FUSDK is based on OpenEmbedded/Yocto framework, allowing you to build custom Linux distributions:
+- build predefined disk images for QEMU, [SiFive HiFive Unleashed](https://www.sifive.com/boards/hifive-unleashed) development board, [SiFive HiFive Unmatched](https://www.sifive.com/boards/hifive-unmatched) and [SiFive HiFive Premier P550](https://www.sifive.com/boards/hifive-premier-p550)
 - build custom disk images with additional software packages from various third-party OE layers;
 - quickly launch QEMU VM instance with your built disk image;
 - build bootloader binaries (OpenSBI, U-Boot, U-Boot SPL);
@@ -49,11 +49,13 @@ provided by the oe-core layer.
 This layer provides a distribution, named `freedom-u-sdk` for the following machines:
 * `freedom-u540`: The SiFive HiFive Unleashed board,
 * `unmatched`: The SiFive Unmatched board,
-* `qemuriscv64`: The Qemu RISC-V 64bits.
+* `qemuriscv64`: The Qemu RISC-V 64bits,
+* `hifive-premier-p550`: The SiFive HiFive Premier P550 board.
 
 It also provides two disk images:
 - `demo-coreip-cli`: basic command line image (**recommended**);
 - `demo-coreip-xfce4`: basic graphical disk image with [Xfce 4](https://www.xfce.org/) desktop environment.
+**For HiFive Premier P550 boards, only Xfce4 image is provided**
 
 ## Build images
 
@@ -68,6 +70,7 @@ build environment to build `demo-coreip` images for supported targets:
 kas build --update ./freedom-u-sdk/scripts/kas/freedom-u540.yml
 kas build --update ./freedom-u-sdk/scripts/kas/qemuriscv64.yml
 kas build --update ./freedom-u-sdk/scripts/kas/unmatched.yml
+kas build --update ./freedom-u-sdk/scripts/kas/hifive-premier-p550.yml
 ```
 
 Moreover, it is also possible to build other images, or SDK, or also packages,
@@ -112,11 +115,18 @@ You will find all available build fragments (incl. disk images) in
 - `freedom-u540`
 - `qemuriscv64`
 - `unmatched`
+- `hifive-premier-p550`
 
 Disk images files use `<image>-<machine>.<output_format>` format, for example,
 
 `demo-coreip-cli-unmatched.rootfs.wic.xz`. We are interested in `.wic.xz` disk
 images for writing to uSD card.
+
+For HiFive Premier P550 board, below are the necessary images along with their description.
+* bootloader_ddr5_secboot.bin - This image is a combination of DDR Firmware, Second Boot Firmware and fw_payload(U-Boot and OpenSBI)
+* boot.vfat - vfat image for kernel. This includes kernel Image, DTB and extlinux.
+* demo-coreip-xfce4-hifive-premier-p550.rootfs.ext4.xz - only rootfs image
+* demo-coreip-xfce4-hifive-premier-p550.rootfs.wic.xz - kernel and rootfs image
 
 > Be very careful while picking /dev/sdX device! Look at dmesg, lsblk, blkid,
 > GNOME Disks, etc. before and after plugging in your uSD card to find a
@@ -127,7 +137,7 @@ images for writing to uSD card.
 
 ### Flash the image on SDCard
 
-Images built can be flashed with `bmaptool` (faster), for example:
+Images built can be flashed with `bmaptool` (faster). Below are the examples for HiFive Unleashed and Unmatched:
 
 ```bash
 sudo bmaptool copy ../build/tmp/deploy/images/unmatched/demo-coreip-xfce4-unmatched.rootfs.wic.xz /dev/mmcblk0
@@ -138,6 +148,8 @@ Otherwise, you can also use the `dd` command, for example:
 ```bash
 xzcat ../build/tmp/deploy/images/unmatched/demo-coreip-xfce4-unmatched.rootfs.wic.xz | sudo dd of=/dev/mmcblk0 bs=512K iflag=fullblock oflag=direct conv=fsync status=progress
 ```
+
+For HiFive Premier P550, Image Flashing and update procedure is available at [Image Flashing](https://www.sifive.com/document-file/hifive-premier-image-update-procedure)
 
 ### MSEL for Unleashed
 
@@ -174,14 +186,25 @@ BOOT MODE SEL
 
 ```
 
+For HiFive Premier P550, bootloader is always loaded from onboard SPI-NOR Flash. The steps to flash and update the bootloader image are available in document [Image Flashing](https://www.sifive.com/document-file/hifive-premier-image-update-procedure) Chapter 5.
 
-### Connecting Using Serial Console
 
+## Connecting Using Serial Console
+
+### Connecting HiFive Unleashed and HiFive Unmatched
 Connect your HiFive Unleashed or HiFive Unmatched to your PC using microUSB-USB cable to access serial console.
 
 For macOS, run: `screen -L /dev/tty.usbserial-*01 115200`
 
 For Linux, run: `screen -L /dev/serial/by-id/usb-FTDI_Dual_RS232-HS-if01-port0 115200`
+
+### Connecting HiFive Premier P550
+Connect your HiFive Premier P550 to your PC using USB Type C cable to access serial console.
+
+For macOS, run: `screen -L /dev/tty.usbserial-*02 115200`
+
+For Linux, run: `screen -L /dev/serial/by-id/usb-FTDI_Dual_RS232-HS-if02-port0 115200`
+
 
 The above commands might vary depending on your exact setup.
 
@@ -193,6 +216,7 @@ terminate all windows by typing `y`.
 You can login with `root` account. The password is `sifive`. __We strongly
 recommend to change the default password  for the root account on the first
 boot before you connect it to the Internet.__
+
 
 ### Connecting Using SSH
 
@@ -209,7 +233,7 @@ systemctl disable sshd.socket
 systemctl stop sshd.socket
 ```
 
-The HiFive Unleashed and Unmatched behave like any other network capable
+The HiFive Unleashed, Unmatched and Premier P550 behave like any other network capable
 device (such as PC, laptop, and Single Board Computers like Raspberry Pi).
 Connect the board to your network (for example, a router), and it will acquire
 IPv4 + DNS configuration using DHCP protocol. You can use your router
@@ -236,6 +260,8 @@ system). If you already booted the system and cannot do offline resizing then
 the following instructions should resize rootfs (root file partition) to full
 uSD capacity:
 
+Below are the example commands for HiFive Unleashed and Unmatched
+
 ```bash
 sgdisk -v /dev/mmcblk0
 sgdisk -e /dev/mmcblk0
@@ -243,6 +269,17 @@ parted /dev/mmcblk0 resizepart 4 100%
 resize2fs /dev/mmcblk0p4
 sync
 ```
+
+Below are the example commands for HiFive Premier P550
+
+```bash
+sgdisk -v /dev/mmcblkX
+sgdisk -e /dev/mmcblkX
+parted /dev/mmcblkX resizepart 2 100%
+resize2fs /dev/mmcblkXp2
+sync
+```
+> For HiFive Premier P550 boards, X=0 refers to eMMC and X=1 for uSD Card
 
 ### NBD (Network Block Device) rootfs
 
@@ -294,7 +331,7 @@ free space, add a COW layer to make it writable and send "naked" filesystem
 `nbdkit` has a number of plugins and filters allowing various ways how to share
 disk images over the network.
 
-## Run Tensorflow Lite demo
+## Run Tensorflow Lite demo on HiFive Unmatched
 
 ```
 cd /usr/share/tensorflow/lite/examples/python/
@@ -308,6 +345,7 @@ use [freedom-u-sdk](https://github.com/sifive/freedom-u-sdk) repository on
 GitHub. So that the maintainer can process your request.
 
 You are also welcome to join [SiFive Forums ](https://forums.sifive.com/)
-where we have [HiFive Unleashed](https://forums.sifive.com/c/hifive-unleashed/12)
-and [HiFive Unmatched](https://forums.sifive.com/c/hifive-unmatched/16)
+where we have [HiFive Unleashed](https://forums.sifive.com/c/hifive-unleashed/12), 
+[HiFive Unmatched](https://forums.sifive.com/c/hifive-unmatched/16) and
+[HiFive Premier P550](https://forums.sifive.com/c/premier-p550/18)
 categories for discussions.
