@@ -7,7 +7,7 @@ repos:
 
   bitbake:
     url: https://git.openembedded.org/bitbake
-    commit: acfe02fa38b5da9e6a36c6cedcf91d4fcbefbfbd
+    commit: 634f8dede6b9d71b5a6691499fd05a8678b46eae
     layers:
       .: excluded
 
@@ -15,19 +15,19 @@ repos:
 
   openembedded-core:
     url: https://git.openembedded.org/openembedded-core
-    commit: 39d4d267906f8e18d44e1ba5da84acc4a5a85b61
+    commit: 419c1b0f1ed0e3ce22b1022061f763d007883121
     layers:
       meta:
 
   meta-sifive:
     url: https://github.com/sifive/meta-sifive.git
-    commit: f6128343f26d5e376a12da535a59f3be612eda05
+    commit: 27ed0e387494860b9929e395368ab8dff5ae23d1
     layers:
       .:
 
   meta-openembedded:
     url: https://git.openembedded.org/meta-openembedded
-    commit: a43f0d532c399458cae44ce66f3799a220fbb497
+    commit: bb956bf8ff7a32f31deaa83e96880d10ab564d14
     layers:
       meta-filesystems:
       meta-gnome:
@@ -39,11 +39,11 @@ repos:
 
   meta-tensorflow-lite:
     url: https://github.com/NobuoTsukamoto/meta-tensorflow-lite.git
-    commit: 11ab462d32a315ea553a127eccee8c6dbea9c4db
+    commit: 991ea123d7f31446739d587586cb0985262670e0
 
   meta-virtualization:
     url: https://git.yoctoproject.org/meta-virtualization
-    commit: 781735b97ae5013cacabbecd38e6da6b510cf3fb
+    commit: 7b0154418de3350fd23a0bd868742f2b570b24d3
     layers:
       .:
 
