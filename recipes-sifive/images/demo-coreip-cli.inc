@@ -55,7 +55,6 @@ IMAGE_INSTALL += "\
     e2fsprogs-mke2fs \
     gparted \
     parted \
-    gptfdisk \
     rsync \
     screen \
     tmux \
