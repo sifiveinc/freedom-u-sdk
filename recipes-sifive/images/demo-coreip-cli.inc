@@ -55,7 +55,6 @@ IMAGE_INSTALL += "\
     e2fsprogs-mke2fs \
     gparted \
     parted \
-    gptfdisk \
     rsync \
     screen \
     tmux \
@@ -188,6 +187,27 @@ IMAGE_INSTALL:append:freedom-u540 = " \
 
 IMAGE_INSTALL:append:unmatched = " \
     unmatched-udev-rules \
+    "
+
+IMAGE_INSTALL:remove:hifive-premier-p550 = " \
+    wireless-regdb \
+    "
+
+IMAGE_FEATURES:append:hifive-premier-p550 = " \
+    allow-root-login \
+    "
+
+IMAGE_INSTALL:append:hifive-premier-p550 = " \
+    alsa-lib \
+    alsa-utils \
+    dhcpcd \
+    hostapd \
+    lsscsi \
+    lmsensors-config-fancontrol \
+    wireless-regdb-static \
+    es-bmcd \
+    phoronix-test-suite \
+    php \
     "
 
 inherit core-image
